@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code Snippets - Next.js 16 Learning Project
+
+A learning project built with **Next.js 16** to explore modern full-stack development with the latest features and best practices.
+
+## About
+
+This is an educational project designed to practice and demonstrate:
+- Next.js 16 app router and server/client components
+- Full-stack development with TypeScript
+- Database integration with Prisma ORM
+- Modern React patterns and composition
+- Performance optimization techniques
+
+## Tech Stack
+
+- **Frontend Framework**: [Next.js 16](https://nextjs.org) with React 19
+- **Language**: TypeScript
+- **Database ORM**: [Prisma](https://www.prisma.io)
+- **Database**: SQLite (local development)
+- **Package Manager**: pnpm
+- **Styling**: Tailwind CSS
+- **Linting**: ESLint
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 20+ or 22+
+- pnpm (or your preferred package manager)
 
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run the development server:
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to see the application.
 
-## Learn More
+### Database Setup
 
-To learn more about Next.js, take a look at the following resources:
+Initialize the database with Prisma:
+```bash
+pnpm prisma migrate dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+View the database with Prisma Studio:
+```bash
+pnpm prisma studio
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Resources & Learning
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs) - Official documentation
+- [Prisma Docs](https://www.prisma.io/docs) - Database ORM guide
+- [React 19 Docs](https://react.dev) - Latest React features
+- [Tailwind CSS](https://tailwindcss.com/docs) - Styling framework
