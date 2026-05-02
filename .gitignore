@@ -40,4 +40,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# database
+*.db
+*.sqlite
+*.sqlite3
+
+# skills and agents
+.agents/
+.claude/
+
 /src/generated/prisma
