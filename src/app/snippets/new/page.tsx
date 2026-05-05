@@ -1,27 +1,15 @@
-import { prisma } from '@/src/db';
-import { redirect } from 'next/navigation';
+'use client';
+
+import { createSnippet, FormState } from '@/src/actions';
+import { useActionState } from 'react';
+
+const initialState: FormState = {};
 
 export default function SnippetCreatePage() {
-  async function createSnippet(formData: FormData) {
-    // This need to be a server action!
-    'use server';
-    // Check the user's inputs and make sure they're valid
-    const title = formData.get('title') as string;
-    const code = formData.get('code') as string;
-    // Create a new record in db
-    const snippet = await prisma.snippet.create({
-      data: {
-        title,
-        code,
-      },
-    });
-    console.log(snippet);
-    // Redirect the user back to the root home
-    redirect('/');
-  }
+  const [formState, formAction] = useActionState(createSnippet, initialState);
 
   return (
-    <form action={createSnippet}>
+    <form action={formAction}>
       <h3 className="font-bold text-xl  my-3">Create a Snippet </h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4 items-center">
@@ -34,13 +22,27 @@ export default function SnippetCreatePage() {
             name="title"
           />
         </div>
+        {formState.errors?.title && (
+          <span className="ring-red-600 ring bg-red-200 rounded-sm px-4 py-2">
+            {formState.errors.title}
+          </span>
+        )}
         <div className="flex gap-4 items-center">
           <label className="w-12" htmlFor="code">
             Code
           </label>
           <textarea className="border rounded p-2 w-full" name="code" />
         </div>
-        <button type="submit" className="rounded p-2 bg-blue-200">
+        {formState.errors?.code && (
+          <span className="ring-red-600 ring bg-red-200 rounded-sm px-4 py-2">
+            {formState.errors.code}
+          </span>
+        )}
+
+        <button
+          type="submit"
+          className="px-6 cursor-pointer rounded-md shadow-sm duration-300 hover:shadow-lg hover:-translate-y-0.5 bg-blue-700 text-white py-2 font-medium text-lg"
+        >
           Create Snippet!
         </button>
       </div>
